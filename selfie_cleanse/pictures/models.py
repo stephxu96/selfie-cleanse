@@ -1,9 +1,25 @@
 from django.db import models
 
-class Selfies(models.Model):
-    imageType = models.CharField(max_length=20)
-    picture = models.ImageField(upload_to='images/', null=True)
-
-#    def __unicode__(self):
-#	return self.name
+class Selfie(models.Model):
+    SELFIE ='Selfie'
+    NONSELFIE= 'Nonselfie'
+    IMAGE_TYPE_CHOICES = (
+	('Person', (
+		(SELFIE),
+		(NONSELFIE),
+	    )
+	),
+	('Other', 'other'),
+    )
+    
+    image_type = models.CharField(
+	max_length = 10,
+	choices = IMAGE_TYPE_CHOICES,
+	default='Other',
+    )
+    image = models.ImageField(upload_to='uploads/')
+    
+    def get_imageType(self):
+        return self.image_type in (self.SELFIE)
+    
 
