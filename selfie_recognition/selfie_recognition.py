@@ -1,5 +1,5 @@
-import face_detection
-import selfie_training
+import selfie_recognition.face_detection as face_detection
+import selfie_recognition.selfie_training as st
 import os
 import numpy as np
 from PIL import Image
@@ -10,15 +10,17 @@ def is_selfie(file, selfie=None):
     if face_detection.num_of_faces(file) != 1:
         return False
 
-    x, y = selfie_training.classifier('is', 'is_not')
+    x, y = st.classifier('is', 'is_not')
 
     clf = linear_model.SGDClassifier()
 
     clf.fit(x, y)
 
-    print(clf.predict(np.array(Image.open(file).resize(
-        selfie_training.PICTURE_RESIZE_X,
-        selfie_training.PICTURE_RESIZE_Y).convert('L'))))
+    if clf.predict(np.array(Image.open(file).resize(
+            st.RESIZE_X, st.RESIZE_Y).convert('L'))) == 0:
+        return True
+    else:
+        return False
 
 
 def remove_non_selfies(directory):
