@@ -16,11 +16,13 @@ def create_data_set(directory):
 
 
 def classifier(*args):
-    with open('training_set.csv', 'wb') as data_set:
-            np.savetxt(data_set, [np.append(array, id_) for id_, directory
-                                  in enumerate(args) for array
-                                  in create_data_set(directory)],
-                       delimiter=',')
+    x, y = np.array([]), np.array([])
+    for id_, directory in enumerate(args):
+        array = create_data_set(directory)
+        x = np.append(x, [id_] * len(array))
+        y = np.append(y, array)
+
+    return x, y
 
 
 def main():
