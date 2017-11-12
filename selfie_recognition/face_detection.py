@@ -1,4 +1,4 @@
-from selfie_recognition.aws_credentials import create_client
+from aws_credentials import create_client
 
 
 def num_of_faces(file):
