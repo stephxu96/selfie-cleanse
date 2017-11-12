@@ -5,4 +5,5 @@ from django.http import HttpResponse
 
 def upload_file(request):
     if request.method == 'POST':
-        image = request.
+        image = request.FILES['image']
+        
