@@ -16,7 +16,9 @@ Including another URLconf
 from django.conf.urls import url, include
 from rest_framework import routers, serializers, viewsets
 from django.contrib import admin
+from pictures import views
 
 urlpatterns = [
+    url(r'^$', views.upload_file, name="POST"),
     url(r'^admin/', include(admin.site.urls)),
 ]

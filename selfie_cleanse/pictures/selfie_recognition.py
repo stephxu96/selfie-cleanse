@@ -1,17 +1,17 @@
-import face_detection
+import pictures.face_detection
 import os
 import numpy as np
 from PIL import Image
 from sklearn import linear_model
 
 
-class SelfieCleanse:
+class SelfieDetection:
 
     RESIZE_X = 640
     RESIZE_Y = 920
 
     def __init__(self):
-        x, y = self.classifier('is', 'is_not')
+        x, y = self.classifier('pictures/is_1', 'pictures/is_not_1')
         self.clf = linear_model.SGDClassifier()
         self.clf.fit(x, y)
 
@@ -53,4 +53,3 @@ class SelfieCleanse:
                       in os.listdir(directory)]:
             if not self.is_selfie(image):
                 os.remove(image)
-

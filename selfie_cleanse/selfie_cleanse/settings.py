@@ -25,7 +25,7 @@ SECRET_KEY = 't_thw1i95v4oz+eslrz=*z&@mule#v!@k4wiz!&5&)2^#)o!60'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.7.6.120', '127.0.0.1']
 
 
 # Application definition
@@ -140,4 +140,3 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = '/Users/macbookpro/Documents/selfie-cleaner/selfie_cleanse/selfie_cleanser/media/'
 MEDIA_URL = 'http://127.0.0.1:8000/selfie_cleanser/media/'
-
